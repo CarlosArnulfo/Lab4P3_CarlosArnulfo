@@ -127,7 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cadena.cpp" />
     <ClCompile Include="Lab4P3_CarlosArnulfo.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cadena.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,11 +1,29 @@
 #include <iostream>
 #include <vector>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 using namespace std;
+
+vector <double> SuavizarVector(vector<double> nums1, vector<double> nums2) {
+	for (int item = 0; item < nums1.size(); item++)
+	{
+		if (!item)
+		{
+			nums1[item] = nums2[item] * 0.8 + nums2[item + 1] * 0.2;
+		}
+		else if (item < nums1.size() - 1) {
+			nums1[item] = nums2[item - 1] * 0.2 + nums2[item] * 0.6 + nums2[item + 1] * 0.2;
+		}
+		else {
+			nums1[item] = nums2[item] * 0.8 + nums2[item - 1] * 0.2;
+		}
+	}
+	return nums1;
+}
+
 void ImprimirVector(vector<double> nums) {
-	cout << "Senial suavizada :" << endl;
 	for (int item = 0; item < nums.size();item++)
 	{
 		cout << nums.at(item) << " ";
@@ -16,17 +34,58 @@ void ImprimirVector(vector<double> nums) {
 void LlenarVector(vector<double> &nums) {
 	for (int item = 0; item < nums.size(); item++)
 	{
-		nums[item] = (RAND_MAX/(150-50));
+		
+		nums[item] = 50 + double(rand()) / (RAND_MAX / (150 - 50));
 	}
 	
 }
 
+double ObtenerPromedio(vector<double> nums) {
+	double promedio = 0;
+	for (int item = 0; item < nums.size(); item++)
+	{
+		promedio += nums[item];
+	}
+	promedio /= nums.size();
+	return promedio;
+}
+
+double ObtenerDesviacion(vector<double> nums) {
+	double desviacion = 0;
+	for (int item = 0; item < nums.size(); item++)
+	{
+		desviacion += pow((nums[item] - ObtenerPromedio(nums)),2);
+	}
+	desviacion /= nums.size();
+	return sqrt(desviacion);
+}
+
+
+
 void Ejer1() {
-	int cantidad;
-	cout << "Ingrese cuantos valores quiere que tenga el vector" << endl;
-	cin >> cantidad;
+	int cantidad=0;
+	while (cantidad<3)
+	{
+		cout << "Ingrese cuantos valores quiere que tenga el vector (mayor que 3)" << endl;
+		cin >> cantidad;
+	}
+	
 	vector<double> nums(cantidad);
 	LlenarVector(nums);
+	cout << "---Resultados---" << endl << endl<<endl;
+	cout << "Senial original: ";
+	ImprimirVector(nums);
+	cout << "Promedio Inicial: " << ObtenerPromedio(nums)<<endl;
+	cout << "Desviacion Estandar Inicial: " << ObtenerDesviacion(nums) << endl<<endl;
+	for (int item = 0; item < 10; item++)
+	{
+		nums = SuavizarVector(nums, nums);
+		cout << "Despues de " << item+1 << " vuelta(s)"<<endl;
+		cout << "Senial suavizada: ";
+		ImprimirVector(nums);
+		cout << "Promedio " << ObtenerPromedio(nums)<<endl;
+		cout << "Desviacion Estandar "<<ObtenerDesviacion(nums)<<endl<<endl;
+	}
 }
 
 void Ejer2() {
@@ -34,13 +93,15 @@ void Ejer2() {
 }
 
 void Menu() {
-	srand(time(NULL));
+	
 	int menu = 0;
-	cout << "1. Ejercicio 1" << endl;
-	cout << "2. Ejercicio 2" << endl;
-	cout << "3. Salir" << endl;
+	
 	while (menu!=3)
 	{
+		cout << "1. Ejercicio 1" << endl;
+		cout << "2. Ejercicio 2" << endl;
+		cout << "3. Salir" << endl;
+		cin >> menu;
 		if (menu==1)
 		{
 			Ejer1();
@@ -59,6 +120,7 @@ void Menu() {
 
 int main()
 {
+	srand(time(NULL));
 	Menu();
 }
 
