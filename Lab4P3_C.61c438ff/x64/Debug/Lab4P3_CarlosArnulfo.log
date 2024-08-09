@@ -1,3 +1,5 @@
-﻿  Lab4P3_CarlosArnulfo.cpp
-C:\PROGRA3\LABS\Lab4P3\Lab4P3_CarlosArnulfo\Lab4P3_CarlosArnulfo.cpp(119,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+﻿  Cadena.cpp
+  Lab4P3_CarlosArnulfo.cpp
+C:\PROGRA3\LABS\Lab4P3\Lab4P3_CarlosArnulfo\Lab4P3_CarlosArnulfo.cpp(124,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+  Generando código...
   Lab4P3_CarlosArnulfo.vcxproj -> C:\PROGRA3\LABS\Lab4P3\Lab4P3_CarlosArnulfo\x64\Debug\Lab4P3_CarlosArnulfo.exe

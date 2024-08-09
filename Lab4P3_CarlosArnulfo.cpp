@@ -1,12 +1,6 @@
-#include <iostream>
-#include <vector>
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-using namespace std;
+#include "Cadena.h"
 
-vector <double> SuavizarVector(vector<double> nums1, vector<double> nums2) {
+vector <double> SuavizarVector(vector<double> nums1, vector<double> nums2) {//Metodo para suavizar el vector, usando las formulas dadas en el pdf
 	for (int item = 0; item < nums1.size(); item++)
 	{
 		if (!item)
@@ -23,7 +17,7 @@ vector <double> SuavizarVector(vector<double> nums1, vector<double> nums2) {
 	return nums1;
 }
 
-void ImprimirVector(vector<double> nums) {
+void ImprimirVector(vector<double> nums) {//metodo de impresion simple para los valores del vector
 	for (int item = 0; item < nums.size();item++)
 	{
 		cout << nums.at(item) << " ";
@@ -35,12 +29,12 @@ void LlenarVector(vector<double> &nums) {
 	for (int item = 0; item < nums.size(); item++)
 	{
 		
-		nums[item] = 50 + double(rand()) / (RAND_MAX / (150 - 50));
+		nums[item] = 50 + double(rand()) / (RAND_MAX / (150 - 50));//asignacion de cada uno de los valores del vector
 	}
 	
 }
 
-double ObtenerPromedio(vector<double> nums) {
+double ObtenerPromedio(vector<double> nums) {//aqui se obtiene el valor promedio de los valores del vector
 	double promedio = 0;
 	for (int item = 0; item < nums.size(); item++)
 	{
@@ -54,7 +48,7 @@ double ObtenerDesviacion(vector<double> nums) {
 	double desviacion = 0;
 	for (int item = 0; item < nums.size(); item++)
 	{
-		desviacion += pow((nums[item] - ObtenerPromedio(nums)),2);
+		desviacion += pow((nums[item] - ObtenerPromedio(nums)),2);//aqui conseguimos la desviacion del vector, con la formula dada en el pdf
 	}
 	desviacion /= nums.size();
 	return sqrt(desviacion);
@@ -89,7 +83,14 @@ void Ejer1() {
 }
 
 void Ejer2() {
-
+	char* cadena = new char[40];
+	cout << "Ingrese una cadena: ";
+	cout << endl;
+	cin.ignore().getline(cadena, 40);
+	Cadena cad(cadena);
+	delete[] cadena;
+	cout << "Cadena ingresada: " << cad.Print() << endl;
+	cad.Estadisticas();
 }
 
 void Menu() {
