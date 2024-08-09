@@ -1,12 +1,65 @@
-
-// Lab4P3_CarlosArnulfo.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
-
 #include <iostream>
+#include <vector>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+using namespace std;
+void ImprimirVector(vector<double> nums) {
+	cout << "Senial suavizada :" << endl;
+	for (int item = 0; item < nums.size();item++)
+	{
+		cout << nums.at(item) << " ";
+	}
+	cout << endl;
+}
+
+void LlenarVector(vector<double> &nums) {
+	for (int item = 0; item < nums.size(); item++)
+	{
+		nums[item] = (RAND_MAX/(150-50));
+	}
+	
+}
+
+void Ejer1() {
+	int cantidad;
+	cout << "Ingrese cuantos valores quiere que tenga el vector" << endl;
+	cin >> cantidad;
+	vector<double> nums(cantidad);
+	LlenarVector(nums);
+}
+
+void Ejer2() {
+
+}
+
+void Menu() {
+	srand(time(NULL));
+	int menu = 0;
+	cout << "1. Ejercicio 1" << endl;
+	cout << "2. Ejercicio 2" << endl;
+	cout << "3. Salir" << endl;
+	while (menu!=3)
+	{
+		if (menu==1)
+		{
+			Ejer1();
+		}
+		else if (menu == 2) {
+			Ejer2();
+		}
+		else if (menu == 3) {
+			cout << "Gracias por ver mi lab" << endl;
+		}
+		else {
+			cout << "Elija una opcion valida" << endl;
+		}
+	}
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	Menu();
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
